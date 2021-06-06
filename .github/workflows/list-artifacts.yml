@@ -20,3 +20,4 @@ jobs:
           echo $GITHUB_EVENT_PATH
           echo "---------------------------"
           printenv
+          echo "---------------------------"
