@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: List artifacts
         uses: chiaretto/github-action-list-artifacts-pr@branch1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Print variables
         run: |
