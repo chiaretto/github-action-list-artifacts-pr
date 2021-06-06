@@ -25549,10 +25549,13 @@ async function run() {
     };
 
     console.log(github)
+    console.log('sender')
+    console.log(github.sender)
+    console.log('workflow')
+    console.log(github.workflow)
+    console.log('workflow_run')
+    console.log(github.workflow_run)
 
-    if (response.status !== 200) {
-      core.error('There was an issue while trying to update the pull-request.');
-    }
   } catch (error) {
     core.error(error);
     core.setFailed(error.message);
