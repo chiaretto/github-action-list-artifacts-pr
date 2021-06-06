@@ -2,7 +2,7 @@ name: Generate Artifacts
 on: [pull_request]
 
 jobs:
-  update-pr:
+  generate-artifacts:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Request Number

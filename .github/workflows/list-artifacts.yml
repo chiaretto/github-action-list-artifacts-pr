@@ -5,7 +5,7 @@ on:
     types: [completed]
 
 jobs:
-  update-pr:
+  list-artifacts:
     runs-on: ubuntu-latest
     steps:
       - name: List artifacts
