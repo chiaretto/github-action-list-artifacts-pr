@@ -1,0 +1,26 @@
+{
+  "name": "github-action-list-artifacts-pr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js -o dist --source-map --license licenses.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiaretto/github-action-list-artifacts-pr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiaretto/github-action-list-artifacts-pr/issues"
+  },
+  "homepage": "https://github.com/chiaretto/github-action-list-artifacts-pr#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "@vercel/ncc": "^0.28.6"
+  }
+}

@@ -1,0 +1,13 @@
+name: 'List artifacts of a pull-request'
+description: 'A github action list artifacts gerenated on a pull request'
+author: 'Fabiano Chiaretto Fernandes'
+branding:
+  icon: 'edit'
+  color: 'purple'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+inputs:
+  github-token:
+    description: 'The GITHUB_TOKEN secret'
+    required: true

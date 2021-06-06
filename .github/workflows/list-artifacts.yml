@@ -1,0 +1,19 @@
+name: List Actifacts
+on:
+  workflow_run:
+    workflows: ["Generate Artifacts"]
+    types: [completed]
+
+jobs:
+  update-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List artifacts
+        uses: chiaretto/github-action-list-artifacts-pr@branch1
+
+      - name: Print variables
+        run: |
+          echo "Variables github"
+          echo "---------------------------"
+          echo $GITHUB_EVENT_PATH
+          echo "---------------------------"
