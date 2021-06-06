@@ -15,7 +15,8 @@ jobs:
 
       - name: Print variables
         run: |
-          echo "Variables github"
+          echo "Variables github GITHUB_EVENT_PATH"
           echo "---------------------------"
           echo $GITHUB_EVENT_PATH
           echo "---------------------------"
+          printenv
