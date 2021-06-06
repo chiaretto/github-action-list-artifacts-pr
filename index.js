@@ -12,13 +12,13 @@ async function run() {
     console.log(github)
 
     console.log('sender')
-    console.log(github.payload.sender)
+    console.log(github.context.payload.sender)
 
     console.log('workflow')
-    console.log(github.payload.workflow)
+    console.log(github.context.payload.workflow)
 
     console.log('workflow_run')
-    console.log(github.payload.workflow_run)
+    console.log(github.context.payload.workflow_run)
 
   } catch (error) {
     core.error(error);
