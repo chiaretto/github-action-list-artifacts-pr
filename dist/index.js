@@ -25571,6 +25571,7 @@ async function run() {
     // Generate outputs
     artifacts.forEach((a) => {
       console.log('::set-output name='+a.name+'::'+a.url_download)
+      console.log('set-output name='+a.name+'::'+a.url_download)
     })
 
   } catch (error) {
