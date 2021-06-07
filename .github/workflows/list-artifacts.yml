@@ -19,5 +19,5 @@ jobs:
           echo "---------------------------"
           echo $GITHUB_EVENT_PATH
           echo "---------------------------"
-          printenv
+          cat $GITHUB_EVENT_PATH
           echo "---------------------------"
