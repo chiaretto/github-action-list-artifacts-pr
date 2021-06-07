@@ -1,33 +1,30 @@
-# Concat pull-request body github action
+# List of artifacts from another workflow
 
-This action will concatenate a certain text, to the original body of the pull request.
+This action will print and set-output all artifacts from another workflow
 ## Inputs
 
 ### `github-token`
 
-**Required** `${{ secrets.GITHUB_TOKEN }}`
-
-### `message`
-
-**Required** 
-
-### `replace-last-message`
-
-
 ## Example usage
 
 ```
-name: Update pull-request body
-on: [pull_request]
+name: List Artifact
+on:
+  workflow_run:
+    workflows: ["Generate Artifacts"]
+    types: [completed]
 
 jobs:
-  update-pr:
+  list-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - name: Update PR Body
-        uses: chiaretto/github-action-concat-pr-body@1.0.3
+      - name: List artifacts
+        id: list-artifacts
+        uses: chiaretto/github-action-list-artifacts-pr@1.0.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-          message: "This pull request generated the following artifacts."
-          replace-last-message: true
+
+      - name: Print variables
+        run: |
+          echo artifact-name: ${{ steps.list-artifacts.outputs.artifact-name }}
 ```
