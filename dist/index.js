@@ -25548,16 +25548,33 @@ async function run() {
       token: core.getInput('github-token', {required: true})
     };
 
-    console.log(github)
+    const client = new github.GitHub(inputs.token);
+    const run_id = github.context.payload.workflow_run.id
+    const lisWorkflowsArtifacts = await client.actions.listWorkflowRunArtifacts({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        run_id: run_id
+    });
 
-    console.log('sender')
-    console.log(github.context.payload.sender)
+    const suite_id = github.context.payload.workflow_run.check_suite_id
+    const owner = github.context.repo.owner
+    const repo = github.context.repo.repo
+    const artifacts = lisWorkflowsArtifacts.data.artifacts.map((i) => {
+      return {
+        id: i.id,
+        name: i.name,
+        suite_id: suite_id,
+        url_download: 'https://github.com/'+owner+'/'+repo+'/suites/'+suite_id+'/artifacts/'+i.id
+      }
+    })
 
-    console.log('workflow')
-    console.log(github.context.payload.workflow)
-
-    console.log('workflow_run')
-    console.log(github.context.payload.workflow_run)
+    console.log('::group::List outputs variables')
+    // Generate outputs
+    artifacts.forEach((a) => {
+      console.log('::set-output name='+a.name+'::'+a.url_download)
+      console.log('set-output name='+a.name+'::'+a.url_download)
+    })
+    console.log('::endgroup::')
 
   } catch (error) {
     core.error(error);

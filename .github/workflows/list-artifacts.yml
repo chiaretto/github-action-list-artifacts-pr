@@ -9,15 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List artifacts
+        id: list-artifacts
         uses: chiaretto/github-action-list-artifacts-pr@branch1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Print variables
         run: |
-          echo "Variables github GITHUB_EVENT_PATH"
-          echo "---------------------------"
-          echo $GITHUB_EVENT_PATH
-          echo "---------------------------"
-          printenv
-          echo "---------------------------"
+          echo rit-linux: ${{ steps.list-artifacts.outputs.rit-linux }}
