@@ -25568,11 +25568,13 @@ async function run() {
       }
     })
 
+    console.log('::group::List outputs variables')
     // Generate outputs
     artifacts.forEach((a) => {
       console.log('::set-output name='+a.name+'::'+a.url_download)
       console.log('set-output name='+a.name+'::'+a.url_download)
     })
+    console.log('::endgroup::')
 
   } catch (error) {
     core.error(error);
