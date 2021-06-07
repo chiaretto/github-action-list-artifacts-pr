@@ -25555,7 +25555,6 @@ async function run() {
         repo: github.context.repo.repo,
         run_id: run_id
     });
-    console.log(lisWorkflowsArtifacts.data)
 
     const suite_id = github.context.payload.workflow_run.check_suite_id
     const owner = github.context.repo.owner
@@ -25569,7 +25568,10 @@ async function run() {
       }
     })
 
-    console.log(artifacts)
+    // Generate outputs
+    artifacts.forEach((a) => {
+      console.log('::set-output name='+a.name+'::'+a.url_download)
+    })
 
   } catch (error) {
     core.error(error);
