@@ -17,3 +17,4 @@ jobs:
       - name: Print variables
         run: |
           echo rit-linux: ${{ steps.list-artifacts.outputs.rit-linux }}
+          echo rit-windows: ${{ steps.list-artifacts.outputs.rit-windows }}
